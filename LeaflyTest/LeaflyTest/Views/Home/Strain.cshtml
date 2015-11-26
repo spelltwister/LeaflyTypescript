@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Strain";
+}
+
+<h2>Strain</h2>
+
+<div data-bind="with:LeaflyCredentialsVm" style="display:none">
+    @Html.Partial("~/Views/Shared/_LeaflyCredentials.cshtml")
+</div>
+<div>
+    <h1>Strain Search</h1>
+    Page: <input type="number" data-bind="value: Page"/>
+    <br/>
+    Take: <input type="number" data-bind="value: Take" />
+    <br/>
+    Search Term: <input type="text" data-bind="value: SearchTerm"/>
+    <br/>
+    Sort: <select data-bind="value: Sort, options: SortOptions"></select>
+
+    <fieldset>
+        <legend>Search Filters</legend>
+        Exclude: <select></select>
+        Flavors: <select multiple="multiple" size="3">
+                     <option>ammonia</option>
+                     <option>apples</option>
+        <option>diesel</option>
+        </select>
+        Category:
+        <select multiple="multiple" size="3">
+            <option>indica</option>
+            <option>sativa</option>
+            <option>hybrid</option>
+        </select>
+        Conditions:
+        <select multiple="multiple" size="3">
+            <option>addadhd</option>
+            <option>anorexia</option>
+            <option>anxiety</option>
+        </select>
+        Tags:
+        <select multiple="multiple" size="3">
+            <option>anxious</option>
+            <option>aroused</option>
+            <option>creative</option>
+        </select>
+        Symptoms:
+        <select multiple="multiple" size="3">
+            <option>cramps</option>
+            <option>depression</option>
+            <option>fatigue</option>
+        </select>
+    </fieldset>
+    <button data-bind="click:function(){ $data.Search(); }">Search</button>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/knockout")
+    <script src="~/Scripts/LeaflyCredentialsViewModel.js"></script>
+
+    <script>
+        var strainVm = {};
+        strainVm.LeaflyCredentialsVm = new LeaflyCredentialsViewModel();
+
+        strainVm.SortOptions = ['rating', 'alpha', 'newest', 'popular'];
+
+        strainVm.Page = ko.observable(0);
+        strainVm.Take = ko.observable(10);
+        strainVm.SearchTerm = ko.observable("");
+        strainVm.Sort = ko.observable(strainVm.SortOptions[0]);
+        strainVm.Filters = {};
+
+        strainVm.Search = function () {
+            var payload = {
+                contentType: "application/json",
+                dataType: "json",
+                url: 'http://data.leafly.com/',
+                headers: {
+                    "app_id": strainVm.LeaflyCredentialsVm.AppId(),
+                    "app_key": strainVm.LeaflyCredentialsVm.AppKey()
+                },
+            };
+
+            payload.url += 'strains';
+            payload.method = 'POST';
+
+            var dataObj = {};
+            dataObj.page = strainVm.Page();
+            dataObj.take = strainVm.Take();
+            dataObj.search = strainVm.SearchTerm();
+            dataObj.sort = strainVm.Sort();
+            // TODO: add filters
+            payload.data = JSON.stringify(dataObj);
+
+            $.ajax(payload)
+            .then(function (result) {
+                console.log(result);
+            },
+            function (error) {
+                console.log(error);
+                throw 'Unable to search for strain via Leafly.';
+            });
+
+        }
+
+        $(function () {
+            ko.applyBindings(strainVm);
+            strainVm.LeaflyCredentialsVm.LoadCredentials();
+        })
+    </script>
+}
