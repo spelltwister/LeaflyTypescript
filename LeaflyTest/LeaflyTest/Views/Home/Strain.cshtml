@@ -56,52 +56,12 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/knockout")
+    <script src="~/Scripts/leafly.js"></script>
     <script src="~/Scripts/LeaflyCredentialsViewModel.js"></script>
+    <script src="~/Scripts/StrainSearchViewModel.js"></script>
 
     <script>
-        var strainVm = {};
-        strainVm.LeaflyCredentialsVm = new LeaflyCredentialsViewModel();
-
-        strainVm.SortOptions = ['rating', 'alpha', 'newest', 'popular'];
-
-        strainVm.Page = ko.observable(0);
-        strainVm.Take = ko.observable(10);
-        strainVm.SearchTerm = ko.observable("");
-        strainVm.Sort = ko.observable(strainVm.SortOptions[0]);
-        strainVm.Filters = {};
-
-        strainVm.Search = function () {
-            var payload = {
-                contentType: "application/json",
-                dataType: "json",
-                url: 'http://data.leafly.com/',
-                headers: {
-                    "app_id": strainVm.LeaflyCredentialsVm.AppId(),
-                    "app_key": strainVm.LeaflyCredentialsVm.AppKey()
-                },
-            };
-
-            payload.url += 'strains';
-            payload.method = 'POST';
-
-            var dataObj = {};
-            dataObj.page = strainVm.Page();
-            dataObj.take = strainVm.Take();
-            dataObj.search = strainVm.SearchTerm();
-            dataObj.sort = strainVm.Sort();
-            // TODO: add filters
-            payload.data = JSON.stringify(dataObj);
-
-            $.ajax(payload)
-            .then(function (result) {
-                console.log(result);
-            },
-            function (error) {
-                console.log(error);
-                throw 'Unable to search for strain via Leafly.';
-            });
-
-        }
+        var strainVm = new StrainSearchViewModel();
 
         $(function () {
             ko.applyBindings(strainVm);

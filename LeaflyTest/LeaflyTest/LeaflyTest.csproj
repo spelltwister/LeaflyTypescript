@@ -362,7 +362,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\leafly.ts" />
     <TypeScriptCompile Include="Scripts\LeaflyCredentialsViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\StrainSearchViewModel.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
   </ItemGroup>
   <ItemGroup>
