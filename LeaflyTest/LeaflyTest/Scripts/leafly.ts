@@ -578,6 +578,10 @@
         Availability(slug: string, latitude: number, longitude: number, radius?: number, productTypeFilter?: string): JQueryPromise<StrainAvailabilityResponse> {
             return $.ajax(StrainAvailabilityRequestFormatter.instance.Format(this.factory.StrainAvailabilityRequest(slug, latitude, longitude, radius, productTypeFilter)));
         }
+
+        AvailableNearUser(slug: string, radius?: number, productTypeFilter?: string): JQueryPromise<StrainAvailabilityResponse> {
+            return Api.GetUserLocation().then((coords) => this.Availability(slug, coords.latitude, coords.longitude, radius, productTypeFilter));
+        }
     }
 
     export class LocationApi {
@@ -590,6 +594,10 @@
 
         Search(position: Position, page?: number, take?: number, filters?: OptionalLocationSearchFilters): JQueryPromise<LocationSearchResponse> {
             return $.ajax(LocationSearchRequestFormatter.instance.Format(this.factory.LocationSearchRequest(position, page, take, filters)));
+        }
+
+        SearchNearUser(page?: number, take?: number, filters?: OptionalLocationSearchFilters): JQueryPromise<LocationSearchResponse> {
+            return Api.GetUserLocation().then((coords) => this.Search(coords, page, take, filters));
         }
 
         Details(slug: string): JQueryPromise<LocationDetailsResponse> {
@@ -618,6 +626,14 @@
 
             this.Locations = new LocationApi(factory);
             this.Strains = new StrainApi(factory);
+        }
+
+        static GetUserLocation(): JQueryPromise<Coordinates> {
+            var ret = $.Deferred();
+            navigator.geolocation.getCurrentPosition(function (result) {
+                ret.resolve(result.coords);
+            });
+            return ret.promise();
         }
     }
 
