@@ -1,4 +1,4 @@
-﻿module Leafly {
+module Leafly {
     export class DataRequestBase {
         app_id: string;
         app_key: string;
@@ -13,32 +13,32 @@
         /**
          * List of effects to exclude (eg, "dry-mouth")
          */
-        exclude: string[];
+        exclude?: string[];
 
         /**
          * List of flavors to include
          */
-        flavors: string[];
+        flavors?: string[];
 
         /**
          * Strain types to include
          */
-        category: string[];
+        category?: string[];
 
         /**
          * Medical conditions to include
          */
-        conditions: string[];
+        conditions?: string[];
 
         /**
          * General effect tags to include
          */
-        tags: string[];
+        tags?: string[];
 
         /**
          * Specific symptoms to include
          */
-        symptoms: string[];
+        symptoms?: string[];
     }
 
     export class StrainSearchRequest extends DataRequestBase {
@@ -60,7 +60,7 @@
             this.filters = filters;
         }
     }
-    
+
     export class StrainDetailsRequest extends DataRequestBase {
         slug: string;
 
@@ -131,7 +131,7 @@
             this.lon = longitude;
             this.radius = radius;
             this.filter = productTypeFilter;
-        } 
+        }
     }
 
     export class OptionalLocationSearchFilters {
@@ -223,7 +223,7 @@
             this.slug = slug;
         }
     };
-    
+
     export class LocationReviewsRequest extends DataRequestBase {
         skip: number; // TODO: why not page :/
         take: number;
@@ -317,10 +317,10 @@
 
             payload.url += 'strains/' + detailsRequest.slug;
             payload['method'] = "GET";
-            
+
             return <any>payload;
         }
-    }    
+    }
 
     class StrainReviewsRequestFormatter implements ILeaflyRequestFormatter<JQueryAjaxSettings> {
         static instance: StrainReviewsRequestFormatter = new StrainReviewsRequestFormatter();
@@ -478,7 +478,7 @@
             return <any>payload;
         }
     }
-    
+
     class LocationMenuRequestFormatter implements ILeaflyRequestFormatter<JQueryAjaxSettings> {
         static instance: LocationMenuRequestFormatter = new LocationMenuRequestFormatter();
         CanFormat(request: DataRequestBase): boolean {
@@ -614,7 +614,7 @@
 
         Specials(slug: string): JQueryPromise<LocationSpecialsResponse> {
             return $.ajax(LocationSpecialsRequestFormatter.instance.Format(this.factory.LocationSpecialsRequest(slug)));
-        }    
+        }
     }
 
     export class Api {
@@ -820,7 +820,7 @@
     export type StrainDetailsEffectsListItem = StrainDetailsConditionsListItem;
     export type StrainDetailsFlavorsListItem = StrainDetailsConditionsListItem;
     export type StrainDetailsNegativesListItem = StrainDetailsConditionsListItem;
-    
+
     export type StrainDetailsGrowInfo = {
         averageYield: string;
         difficulty: string;
@@ -829,7 +829,7 @@
         growNotes: string;
         height: string;
         outdoorFinish: string;
-        preferredMedium: string;        
+        preferredMedium: string;
     };
 
     export type StrainDetailsHighlightedReviewListItem = {
@@ -855,10 +855,10 @@
         uploaded: Date;
     };
 
-    export type StrainDetailsRelatedStrainsListItem = { };
+    export type StrainDetailsRelatedStrainsListItem = {};
 
     export type StrainDetailsSymptomsListItem = StrainDetailsConditionsListItem;
-    
+
     export type StrainDetailsResponse = {
         aka: string;
         articleTotalCount: number;
