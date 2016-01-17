@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeaflyTest", "LeaflyTest\LeaflyTest.csproj", "{E57E2888-17CF-4344-AF0E-334050615F2C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LeaflyApi.Types", "LeaflyApi\LeaflyApi.Types.xproj", "{4D0FACC8-40EC-4BC3-89D1-ED0907FE9B4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{78F19557-E8A9-4C6F-A375-F0D912DC7EDD}"
+	ProjectSection(SolutionItems) = preProject
+		LeaflyApi\global.json = LeaflyApi\global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{E57E2888-17CF-4344-AF0E-334050615F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E57E2888-17CF-4344-AF0E-334050615F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E57E2888-17CF-4344-AF0E-334050615F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0FACC8-40EC-4BC3-89D1-ED0907FE9B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0FACC8-40EC-4BC3-89D1-ED0907FE9B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0FACC8-40EC-4BC3-89D1-ED0907FE9B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0FACC8-40EC-4BC3-89D1-ED0907FE9B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
