@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0-*",
-  "description": "LeaflyApi.Web Class Library",
-  "authors": [ "mike" ],
-  "tags": [ "" ],
+  "version": "0.6.0-beta",
+  "description": "Leafly Api implementation using HttpClient.",
+  "authors": [ "Mike Pavlak" ],
+  "tags": [ "Leafly" ],
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
@@ -24,6 +24,6 @@
     }
   },
   "dependencies": {
-    "LeaflyApi": "1.0.0-*"
+    "LeaflyApi": "0.6.0-*"
   }
 }

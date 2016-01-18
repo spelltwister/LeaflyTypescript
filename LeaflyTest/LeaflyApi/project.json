@@ -1,8 +1,8 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "LeaflyApi Class Library",
-  "authors": [ "mike" ],
-  "tags": [ "" ],
+  "version": "0.6.0-beta",
+  "description": "Leafly Api request and response types.",
+  "authors": [ "Mike Pavlak" ],
+  "tags": [ "Leafly" ],
   "projectUrl": "",
   "licenseUrl": "",
 
