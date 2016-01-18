@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0-*",
+  "description": "LeaflyApi.Web Class Library",
+  "authors": [ "mike" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "net451": {
+      "dependencies": {
+        "Microsoft.AspNet.WebApi.Client": "5.2.3"
+      }
+    },
+    "dotnet5.4": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-beta-23516",
+        "System.Collections": "4.0.11-beta-23516",
+        "System.Linq": "4.0.1-beta-23516",
+        "System.Runtime": "4.0.21-beta-23516",
+        "System.Threading": "4.0.11-beta-23516",
+        "Microsoft.AspNet.WebApi.Client": "5.2.3",
+        "System.Net.Http": "4.0.1-beta-23516"
+      }
+    }
+  },
+  "dependencies": {
+    "LeaflyApi": "1.0.0-*"
+  }
+}

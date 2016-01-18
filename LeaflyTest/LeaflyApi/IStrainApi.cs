@@ -10,32 +10,32 @@ namespace LeaflyApi.Types
         /// <summary>
         /// List of effects to exclude(eg, "dry-mouth")
         /// </summary>
-        ICollection<string> exclude { get; set; }
+        public ICollection<string> exclude { get; set; }
 
         /// <summary>
         /// List of flavors to include
         /// </summary>
-        ICollection<string> flavors { get; set; }
+        public ICollection<string> flavors { get; set; }
 
         /// <summary>
         /// Strain types to include
         /// </summary>
-        ICollection<string> category { get; set; }
+        public ICollection<string> category { get; set; }
 
         /// <summary>
         /// Medical conditions to include
         /// </summary>
-        ICollection<string> conditions { get; set; }
+        public ICollection<string> conditions { get; set; }
 
         /// <summary>
         /// General effect tags to include
         /// </summary>
-        ICollection<string> tags { get; set; }
+        public ICollection<string> tags { get; set; }
 
         /// <summary>
         /// Specific symptoms to include
         /// </summary>
-        ICollection<string> symptoms { get; set; }
+        public ICollection<string> symptoms { get; set; }
     }
 
     public class FacetsListItem
