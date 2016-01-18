@@ -2,22 +2,22 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 
-using LeaflyApi.Types;
+using Leafly.Types;
 
 namespace LeaflyTest.Controllers
 {
     internal static class LeaflyApiInstance
     {
-        private static Lazy<LeaflyApi.Web.Api> LeaflyApiProxy = new Lazy<LeaflyApi.Web.Api>(() =>
-            new LeaflyApi.Web.Api(System.Configuration.ConfigurationManager.AppSettings.Get("leaflyAppKey"),
+        private static Lazy<Leafly.Web.Api> LeaflyApiProxy = new Lazy<Leafly.Web.Api>(() =>
+            new Leafly.Web.Api(System.Configuration.ConfigurationManager.AppSettings.Get("leaflyAppKey"),
                                   System.Configuration.ConfigurationManager.AppSettings.Get("leaflyAppId")));
 
-        public static LeaflyApi.Web.LocationApi LocationApiProxy { get { return LeaflyApiProxy.Value.Locations; } }
-        public static LeaflyApi.Web.StrainApi StrainApiProxy { get { return LeaflyApiProxy.Value.Strains; } }
+        public static Leafly.Web.LocationApi LocationApiProxy { get { return LeaflyApiProxy.Value.Locations; } }
+        public static Leafly.Web.StrainApi StrainApiProxy { get { return LeaflyApiProxy.Value.Strains; } }
     }
 
     [RoutePrefix("api/leafly/locations")]
-    public class LeaflyLocationProxyApiController : ApiController, LeaflyApi.Types.ILocationApi
+    public class LeaflyLocationProxyApiController : ApiController, Leafly.Types.ILocationApi
     {
         [HttpGet]
         [Route("details/{slug}")]
