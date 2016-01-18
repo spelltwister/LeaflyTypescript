@@ -102,7 +102,7 @@ namespace LeaflyApi.Web
             {
                 reqString += $"&filter={productTypeFilter}";
             }
-            return factory.GetStrainClientAndReadAsAsync<StrainAvailabilityResponseListItem[]>(reqString;
+            return factory.GetStrainClientAndReadAsAsync<StrainAvailabilityResponseListItem[]>(reqString);
         }
     }
 }
