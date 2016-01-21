@@ -726,8 +726,8 @@ module Leafly {
     }
 
     export type StrainSearchListItemBase = {
-        Id: number;
-        Category: string;
+        Id: string;
+        Category: number;
         Name: string;
         Active: boolean;
         DisplayLabel: string;
